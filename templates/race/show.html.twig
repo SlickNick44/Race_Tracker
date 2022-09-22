@@ -1,0 +1,169 @@
+{% extends "./base.html.twig" %}
+
+{% block body %}
+    <script>
+        function myFunction() {
+            var r = confirm("Are you sure you wish to delete this race?");
+            if (r == true) {
+                window.location.href = "/races/delete/{{race.id}}";
+            }
+        }
+    </script>
+       
+    <div class="sm:w-3/5 w-4/5 mx-auto">
+        <h1 class="pt-20 sm:text-5xl md:text-7xl text-4xl font-bold text-center">
+            {{ race.raceName }}
+        </h1>
+
+        <div class="py-10 text-center">
+            <div class="inline-block sm:pt-1">
+                <h2 class="text-sm text-gray-600">
+                    {{ race.date }}
+                </h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="md:grid lg:grid-cols-2 gap-20 w-4/5 mx-auto py-15 ">
+        <div class="text-center pt-8 pb-4">
+            <h2 class="text-gray-700 font-bold text-3xl py-2">
+                Medium distance
+            </h2>
+
+            <p>
+                <div class="container">
+                    <div class="flex flex-wrap -mx-4">
+                        <div class="w-full px-4">
+                            <div class="max-w-full overflow-x-auto">
+                                <table class="table-auto w-full">
+                                    <thead>
+                                        <tr class="bg-gray-600 text-center">
+                                            <th class="w-1/6 min-w-[160px] text-lg font-semibold text-white py-4 lg:py-7 px-3 lg:px-4 border-l border-transparent">
+                                                Full Name
+                                            </th>
+
+                                            <th class="w-1/6 min-w-[160px] text-lg font-semibold text-white py-4 lg:py-7 px-3 lg:px-4">
+                                                Time
+                                            </th>
+
+                                            <th class="w-1/6 min-w-[160px] text-lg font-semibold text-white py-4 lg:py-7 px-3 lg:px-4">
+                                                Distance
+                                            </th>
+                    
+                                            <th class="w-1/6 min-w-[160px] text-lg font-semibold text-white py-4 lg:py-7 px-3 lg:px-4 border-r border-transparent"></th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        {% for result in medium %}
+                                            <tr>
+                                                <td class="text-center text-dark font-medium text-base py-5 px-2 bg-white border-b border-l border-[#E8E8E8]">
+                                                    {{ result.fullName }}
+                                                </td>
+
+                                                <td class="text-center text-dark font-medium text-base py-5 px-2 bg-white border-b border-[#E8E8E8]">
+                                                    {{ result.raceTime }}
+                                                </td>
+
+                                                <td class="text-center text-dark font-medium text-base py-5 px-2 bg-white border-b border-[#E8E8E8]">
+                                                    {{ result.distance }}
+                                                </td>
+
+                                                <td class="text-center text-dark font-medium text-base py-5 px-2 bg-white border-b border-r border-[#E8E8E8]">
+                                                    <a 
+                                                        href="/results/edit/{{result.id}}"
+                                                        class="border border-gray-500 text-lg py-4 px-10 mx-5 rounded transition transition-all bg-gray-800 text-white hover:bg-white hover:text-gray-800">
+                                                        Edit
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </p>
+        </div>
+
+        <div class="text-center pt-8 pb-4">
+            <h2 class="text-gray-700 font-bold text-3xl py-2">
+                Long distance
+            </h2>
+
+            <p>
+                <div class="container">
+                    <div class="flex flex-wrap -mx-4">
+                        <div class="w-full px-4">
+                            <div class="max-w-full overflow-x-auto">
+                                <table class="table-auto w-full">
+                                    <thead>
+                                        <tr class="bg-gray-600 text-center">
+                                            <th class="w-1/6 min-w-[160px] text-lg font-semibold text-white py-4 lg:py-7 px-3 lg:px-4 border-l border-transparent">
+                                                Full Name
+                                            </th>
+
+                                            <th class="w-1/6 min-w-[160px] text-lg font-semibold text-white py-4 lg:py-7 px-3 lg:px-4">
+                                                Time
+                                            </th>
+
+                                            <th class="w-1/6 min-w-[160px] text-lg font-semibold text-white py-4 lg:py-7 px-3 lg:px-4">
+                                                Distance
+                                            </th>
+                    
+                                            <th class="w-1/6 min-w-[160px] text-lg font-semibold text-white py-4 lg:py-7 px-3 lg:px-4 border-r border-transparent"></th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        {% for result in long %}
+                                            <tr>
+                                                <td class="text-center text-dark font-medium text-base py-5 px-2 bg-white border-b border-l border-[#E8E8E8]">
+                                                    {{ result.fullName }}
+                                                </td>
+
+                                                <td class="text-center text-dark font-medium text-base py-5 px-2 bg-white border-b border-[#E8E8E8]">
+                                                    {{ result.raceTime }}
+                                                </td>
+
+                                                <td class="text-center text-dark font-medium text-base py-5 px-2 bg-white border-b border-[#E8E8E8]">
+                                                    {{ result.distance }}
+                                                </td>
+
+                                                <td class="text-center text-dark font-medium text-base py-5 px-2 bg-white border-b border-r border-[#E8E8E8]">
+                                                    <a 
+                                                        href="/results/edit/{{result.id}}"
+                                                        class="border border-gray-500 text-lg py-4 px-10 mx-5 rounded transition transition-all bg-gray-800 text-white hover:bg-white hover:text-gray-800">
+                                                        Edit
+                                                    </a> 
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </p>
+        </div>
+    </div>
+              
+    <div class="text-center">
+        <a 
+            href="/races/edit/{{race.id}}"
+            class="border border-gray-500 text-lg py-4 px-10 mx-5 rounded transition transition-all bg-gray-800 text-white hover:bg-white hover:text-gray-800">
+            Edit
+        </a>
+
+        <button 
+            class="border border-gray-500 text-lg py-4 px-10 mx-5 rounded transition transition-all bg-red-800 text-white hover:bg-white hover:text-gray-800" 
+            onclick="myFunction()">
+            Delete
+        </button>   
+    </div>
+{% endblock %}
+
+
+
